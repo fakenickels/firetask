@@ -1,0 +1,13 @@
+/* CSS declarations go here */
+
+.tasks-list li {
+	cursor: pointer
+}
+
+.tasks-list li button {
+	display: none
+}
+
+.tasks-list li:hover button {
+	display: block
+}

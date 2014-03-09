@@ -1,0 +1,92 @@
+<head>
+  <title>Firetask</title>
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+  {{> tasks}}
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+</body>
+
+<template name="tasks">
+	<div class='container'>
+		<h1>Firetask</h1>
+		<div>
+			<form id='task-editor'>
+				<input class='hidden' name='id'>
+				<input class='form-control input-lg' placeholder='Describe the task...' name='desc'>
+				<select id='tasks-types-sel' class='form-control'>
+					<option value='waiting'>Waiting</option>
+					<option value='running'>Running</option>
+					<option value='finished'>Finished</option>
+				</select><br>
+
+				<button class='btn btn-success' type='button'>Salve</button>
+			</form>
+		</div>
+
+		<div class='row'>
+			<div class='col-md-4' id='waiting'>
+				<div class='col-md-12'>
+					<h2>Waiting <span class="glyphicon glyphicon-pause"></span></h2>
+				</div>
+				<div class='col-md-12 tasks'>
+					<ul class='tasks-list list-group'>
+					{{#each waiting}}
+						{{> tasks_list }}
+					{{/each}}
+					</ul>
+				</div>
+			</div>
+			
+			<div class='col-md-4' id='running'>
+				<div class='col-md-12'>
+					<h2>Running <span class="glyphicon glyphicon-refresh"></span></h2>
+				</div>
+				<div class='col-md-12 running'>
+					<ul class='tasks-list list-group'>
+					{{#each running}}
+						{{> tasks_list }}
+					{{/each}}
+					</ul>				
+				</div>			
+			</div>
+			
+			<div class='col-md-4'>
+				<div class='col-md-12'>
+					<h2>Finished <span class="glyphicon glyphicon-ok"></span></h2>
+				</div>
+				<div class='col-md-12 finished'>
+					<ul class='tasks-list list-group'>
+					{{#each finished}}
+						{{> tasks_list }}
+					{{/each}}
+					</ul>				
+				</div>			
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name='tasks_list'>
+						<li class='list-group-item' id="{{ _id }}">
+							<h3>{{ desc }} <span class='badge'>{{ score }}</span></h3>
+							<div class='btn-group'>
+								<button type='button' class='btn btn-primary task-edit'><span class="glyphicon glyphicon-pencil"></span></button>
+								<button type='button' class='btn btn-danger task-destroy'><span class="glyphicon glyphicon-remove"></span></button>
+							</div>
+						</li>
+</template>
+
+<template name='edit_form'>
+	<form>
+		<input class='form-control' name='desc' value="{{ desc }}"/>
+		<select class='form-control'>
+			{{#each task_types}}
+				<option value="{{ task_type }}">
+			{{/each}}
+		</select>
+		<button class='btn btn-success'>Salvar</button>
+	</form>
+</template>
