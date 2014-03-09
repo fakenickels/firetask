@@ -12,19 +12,19 @@
 <template name="tasks">
 	<div class='container'>
 		<div class='pull-right'>
-	
-			{{loginButtons align='right'}}
+			{{loginButtons align='right' class='btn btn-primary'}}
 		</div>
 
-		<h1>Firetask <small>
+		<h1>Firetask 
+			<small>
+				<iframe src="http://ghbtns.com/github-btn.html?user=grsabreu&repo=firetask&type=fork"
+			  allowtransparency="true" frameborder="0" scrolling="0" width="53" height="20"></iframe>
 
-	<iframe src="http://ghbtns.com/github-btn.html?user=grsabreu&repo=firetask&type=fork"
-  allowtransparency="true" frameborder="0" scrolling="0" width="53" height="20"></iframe>
+				<iframe src="http://ghbtns.com/github-btn.html?user=grsabreu&type=follow"
+			  allowtransparency="true" frameborder="0" scrolling="0" height="20"></iframe>
+		</small>
+		</h1>
 
-	<iframe src="http://ghbtns.com/github-btn.html?user=grsabreu&type=follow"
-  allowtransparency="true" frameborder="0" scrolling="0" height="20"></iframe>
-
-		</small></h1>
 		<div>
 			<form id='task-editor'>
 				<input class='hidden' name='id'>
@@ -83,13 +83,13 @@
 </template>
 
 <template name='tasks_list'>
-						<li class='list-group-item' id="{{ _id }}">
-							<h3>{{ desc }} <span class='badge'>{{ score }}</span></h3>
-							<div class='btn-group'>
-								<button type='button' class='btn btn-primary task-edit'><span class="glyphicon glyphicon-pencil"></span></button>
-								<button type='button' class='btn btn-danger task-destroy'><span class="glyphicon glyphicon-remove"></span></button>
-							</div>
-						</li>
+	<li class='list-group-item' id="{{ _id }}">
+		<h3>{{ desc }} <span class='badge'>{{ score }}</span></h3>
+		<div class='btn-group'>
+			<button type='button' class='btn btn-primary task-edit'><span class="glyphicon glyphicon-pencil"></span></button>
+			<button type='button' class='btn btn-danger task-destroy'><span class="glyphicon glyphicon-remove"></span></button>
+		</div>
+	</li>
 </template>
 
 <template name='edit_form'>
