@@ -16,7 +16,13 @@ if (Meteor.isClient) {
   Template.edit_form.task_types = function(){
   	return ['waiting', 'running', 'finished'];
   };
-  
+  	
+  	Meteor.defer(function(){
+  		if( !Meteor.user() ){
+  			$('input, button, select', '#task-editor').attr('disabled', 'true')
+  		}
+  	})
+
 	Template.tasks.events({
 		'click .task-destroy': function(){
 			$('#' + this._id).slideUp(600,function(){ $(this).remove(); });

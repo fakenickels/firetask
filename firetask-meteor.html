@@ -11,9 +11,16 @@
 
 <template name="tasks">
 	<div class='container'>
-		<div class='pull-right'>
-			{{loginButtons align='right' class='btn btn-primary'}}
-		</div>
+		{{#if currentUser}}
+			<div class='pull-right'>
+				{{loginButtons align='right' class='btn btn-primary'}}
+			</div>
+		{{else}}
+			<div class="alert alert-warning alert-dismissable">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<strong>Warning!</strong> You must be logged to use. Click in {{loginButtons}}
+			</div>		
+		{{/if}}
 
 		<h1>Firetask 
 			<small>
@@ -35,7 +42,7 @@
 					<option value='finished'>Finished</option>
 				</select><br>
 
-				<button class='btn btn-success' type='button'>Salve</button>
+				<button class='btn btn-success' type='button'>Save</button>
 			</form>
 		</div>
 
@@ -100,6 +107,6 @@
 				<option value="{{ task_type }}">
 			{{/each}}
 		</select>
-		<button class='btn btn-success'>Salvar</button>
+		<button class='btn btn-success'>Save</button>
 	</form>
 </template>
